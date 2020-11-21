@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Настройки{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-8 mx-auto"><h4 class="my-2">Настройки пользователя</h4>
+        <form method="POST" action="" class="my-4">{% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Обновить</button>
+            </div>
+        </form>
+        <form method="GET" action="{% url 'accounts:delete' %}" class="my-4">
+            <button type="submit" class="btn btn-danger">Удалить</button>
+        </form>
+    </div>
+</div>
+
+<hr>
+
+<div class="row" my-5>
+    <div class="col-md-8 mx-auto"><p class="my-2">Создать новую пару для поиска "Город\Специальность"</p>
+        <p>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsed"
+                    aria-expanded="false" aria-controls="collapsed">
+                Заполнить заявку
+            </button>
+        </p>
+        <div class="collapse" id="collapsed">
+            <div class="card card-body">
+                <form method="POST" action="{% url 'accounts:contact' %}" class="my-4">{% csrf_token %}
+                    <div class="form-group">
+                        {{ contact_form.as_p }}
+                        <button type="submit" class="btn btn-primary">Отправить данные администратору</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

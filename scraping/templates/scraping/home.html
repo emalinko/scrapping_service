@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Custom title rewriting default value{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h2 class="text-center my-3">Сервис по сбору и рассылке вакансий</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8 mx-auto"><h4 class="my-2">Для просмотра доступных вакансий заполните форму:</h4>
+        <form method="GET" action="{% url 'list' %}" class="my-4">
+            <div class="form-group">
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Найти</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
